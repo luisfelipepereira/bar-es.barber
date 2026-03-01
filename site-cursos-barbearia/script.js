@@ -92,3 +92,27 @@ const observerSide = new IntersectionObserver((entries) => {
 elements.forEach(el => {
   observerSide.observe(el);
 });
+
+const form = document.getElementById("agendamento");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const dados = {
+    nome: form[0].value,
+    telefone: form[1].value,
+    data: form[2].value,
+    horario: form[3].value
+  };
+
+  const resposta = await fetch("http://localhost:3000/agendar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+  });
+
+  const resultado = await resposta.json();
+  alert(resultado.mensagem);
+});

@@ -14,7 +14,7 @@ header.scrolled {
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #111111;
+  background: #000000;
   color: #fff;
   body {
   padding-top: 90px; /* altura do header */
@@ -209,6 +209,74 @@ header.hide {
 }
 
 /* HERO PREMIUM */
+/* Container que envolve cada grupo (Fotos/Vídeos) */
+.galeria-wrapper {
+  background: #111;
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  border: 1px solid #222;
+}
+
+.galeria-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.galeria-header i {
+  color: gold;
+  font-size: 1.5rem;
+}
+
+.galeria-header h3 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Ajustes da Grid */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+/* Fotos: 4 colunas em telas grandes */
+.grid-fotos {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Vídeos: 3 colunas em telas grandes */
+.grid-videos {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.img-galeria, .video-galeria {
+  width: 100%;
+  height: 350px; /* Altura fixa para manter o padrão */
+  object-fit: cover; /* Garante que a imagem/vídeo preencha o espaço sem deformar */
+  border-radius: 12px;
+  transition: 0.3s;
+  background: #000;
+}
+
+.video-galeria:hover, .img-galeria:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+  .galeria-wrapper {
+    padding: 15px;
+  }
+  
+  .img-galeria, .video-galeria {
+    height: 300px;
+  }
+}
 
 .hero {
   position: relative;
@@ -360,6 +428,90 @@ justify-content: space-between;
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   z-index: 1000;
   transition: 0.3s;
+}
+/* SEÇÃO EXPLICAÇÃO DO CURSO */
+.desc-secao {
+  margin-bottom: 40px;
+  opacity: 0.8;
+  font-size: 1.1rem;
+}
+
+.aprendizado-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.aprendizado-card {
+  background: #111;
+  padding: 30px;
+  border-radius: 15px;
+  border-bottom: 3px solid gold;
+  transition: 0.3s;
+  text-align: left;
+}
+
+.aprendizado-card:hover {
+  background: #1a1a1a;
+  transform: translateY(-5px);
+}
+
+.aprendizado-card i {
+  color: gold;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.aprendizado-card h4 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.aprendizado-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+/* Garante que o link se pareça com o botão original */
+.btn-card-link {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: gold;
+  color: #000;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-card-link:hover {
+  background: #fff;
+  transform: scale(1.05);
+}
+/* Ajuste para alinhar o botão no fundo do card de preço */
+.plano {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+}
+
+.valor {
+  font-size: 2rem;
+  font-weight: bold;
+  color: gold;
+  margin: 15px 0;
+}
+/* Ajuste para mobile */
+@media (max-width: 600px) {
+  .aprendizado-card {
+    text-align: center;
+  }
 }
 
 .whatsapp-float:hover {
