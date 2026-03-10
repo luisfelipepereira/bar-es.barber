@@ -37,16 +37,27 @@ window.addEventListener("scroll", () => {
 
 // ANIMAÇÃO PREMIUM COM INTERSECTION OBSERVER
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("active");
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.2
-});
+const revealElements = document.querySelectorAll(".reveal")
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("active")
+
+}
+
+})
+
+},{threshold:0.15})
+
+revealElements.forEach(el=>{
+
+observer.observe(el)
+
+})
 
 document.querySelectorAll(".reveal").forEach(el => {
   observer.observe(el);
@@ -93,8 +104,6 @@ elements.forEach(el => {
   observerSide.observe(el);
 });
 
-const form = document.getElementById("agendamento");
-
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -116,3 +125,50 @@ form.addEventListener("submit", async (e) => {
   const resultado = await resposta.json();
   alert(resultado.mensagem);
 });
+const themeBtn = document.querySelector(".theme-toggle")
+
+themeBtn.addEventListener("click",()=>{
+
+document.body.classList.toggle("light-theme")
+
+})
+const imagens = document.querySelectorAll(".img-galeria")
+const modal = document.querySelector(".modal")
+const modalImg = document.querySelector(".modal-img")
+
+imagens.forEach(img=>{
+
+img.addEventListener("click",()=>{
+
+modal.style.display="flex"
+modalImg.src=img.src
+
+})
+
+})
+
+modal.addEventListener("click",()=>{
+
+modal.style.display="none"
+
+})
+
+const btnVerMais = document.querySelector(".btn-vermais")
+const extra = document.querySelector(".extra-cortes")
+
+btnVerMais.addEventListener("click",()=>{
+
+extra.classList.toggle("ativo")
+
+if(extra.classList.contains("ativo")){
+
+btnVerMais.innerText="Ver menos"
+
+}else{
+
+btnVerMais.innerText="Ver mais cortes"
+
+}
+
+})
+
